@@ -71,8 +71,8 @@ go mod tidy
 Create a `.env` file in the root directory and add your PostgreSQL credentials:
 
 ```env
-PORT=8080
-DB_URL="host=localhost user=your_user password=your_password dbname=your_db port=5432 sslmode=disable"
+PORT=<port no>
+DB_URL="host=<hostname> user=<username> password=<password> dbname=<db_name> port=<db_port_no> sslmode=disable"
 
 ```
 
