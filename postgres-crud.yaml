@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: gojwtproject
+      POSTGRES_PASSWORD: gojwtproject
+      POSTGRES_DB: testdb
+    ports:
+      - 9920:5432 # Expose PostgreSQL on port 9920
+    volumes:
+      - db_data:/var/lib/postgresql/data # Persist data in a named volume
+      - type: tmpfs
+        target: /dev/shm
+        tmpfs:
+          size: 128m # Set the size of the tmpfs mount to 128MB
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 5000:8080
+
+volumes:
+  db_data:
+    driver: local
